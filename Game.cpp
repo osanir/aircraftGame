@@ -1,11 +1,16 @@
 #include "Game.h"
 
-Game::Game() : window(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT) , "Rider", Style::Default) {
-
+Game::Game() 
+    : mWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT) , "Rider", sf::Style::Default) 
+    , mPlayer()
+{
+        mPlayer.setRadius(40.f);
+        mPlayer.setPosition(100.f, 100.f);
+        mPlayer.setFillColor(sf::Color::Red);
 }
 
 void Game::run(){
-    while(window.isOpen() ){
+    while(mWindow.isOpen() ){
         processEvents();
         update();
         render();
@@ -13,11 +18,11 @@ void Game::run(){
 }
 
 void Game::processEvents(){
-    Event e;
-    while( window.pollEvent(e) ){
+    sf::Event e;
+    while( mWindow.pollEvent(e) ){
         switch (e.type){
-            case Event::Closed:
-                window.close();
+            case sf::Event::Closed:
+                mWindow.close();
                 break;
             default:
                 break;
@@ -30,7 +35,7 @@ void Game::update(){
 }
 
 void Game::render(){
-    window.clear(Color::Black);
-    //window.draw();
-    window.display();
+    mWindow.clear(sf::Color::Black);
+    mWindow.draw(mPlayer);
+    mWindow.display();
 }

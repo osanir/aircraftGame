@@ -2,9 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-using namespace sf;
-using namespace std;
-
 #define SCREEN_WIDTH    1024
 #define SCREEN_HEIGHT   768
 
@@ -17,6 +14,6 @@ private:
     void update();
     void render();
 
-    RenderWindow window;
-
+    sf::RenderWindow mWindow;
+    sf::CircleShape mPlayer;
 };
