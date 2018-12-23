@@ -1,7 +1,7 @@
 #include "../include/Game.h"
 
 Game::Game() 
-    : mWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT) , "Rider", sf::Style::Default) 
+    : mWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT) , "Aircraft", sf::Style::Default) 
     , mTexture()
     , mPlayer()
 {
@@ -56,7 +56,7 @@ void Game::update(sf::Time deltaTime){
 }
 
 void Game::render(){
-    mWindow.clear(sf::Color::Black);
+    mWindow.clear(sf::Color::White);
     mWindow.draw(mPlayer);
     mWindow.display();
 }
