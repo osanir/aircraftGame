@@ -4,16 +4,18 @@ Game::Game()
     : mWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT) , "Rider", sf::Style::Default) 
     , mPlayer()
 {
-        mWindow.setFramerateLimit(60);
+        //mWindow.setFramerateLimit(60);
         mPlayer.setRadius(40.f);
         mPlayer.setPosition(100.f, 100.f);
         mPlayer.setFillColor(sf::Color::Cyan);
 }
 
 void Game::run(){
+    sf::Clock clock;
     while(mWindow.isOpen() ){
+        sf::Time deltaTime = clock.restart();
         processEvents();
-        update();
+        update(deltaTime);
         render();
     }
 }
@@ -35,9 +37,9 @@ void Game::processEvents(){
     }
 }
 
-void Game::update(){
+void Game::update(sf::Time deltaTime){
     sf::Vector2f movement(0.f, 0.f);
-    float speed = 1.f;
+    float speed = 500.f;
     if( mIsMovingUp )
         movement.y -= speed;
     if( mIsMovingDown )
@@ -47,7 +49,7 @@ void Game::update(){
     if( mIsMovingLeft )
         movement.x -= speed;
 
-    mPlayer.move(movement);
+    mPlayer.move(movement * deltaTime.asSeconds());
 }
 
 void Game::render(){
