@@ -14,6 +14,13 @@ private:
     void update();
     void render();
 
+    void handlePlayerInput(sf::Keyboard::Key, bool);
+
     sf::RenderWindow mWindow;
     sf::CircleShape mPlayer;
+
+    bool mIsMovingUp = false;
+    bool mIsMovingDown = false;
+    bool mIsMovingLeft = false;
+    bool mIsMovingRight = false;
 };
