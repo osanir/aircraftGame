@@ -1,13 +1,16 @@
-#include "Game.h"
+#include "../include/Game.h"
 
 Game::Game() 
     : mWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT) , "Rider", sf::Style::Default) 
+    , mTexture()
     , mPlayer()
 {
         //mWindow.setFramerateLimit(60);
-        mPlayer.setRadius(40.f);
+        if(!mTexture.loadFromFile("res/texture/airplane.png")){
+            // Handle loading error
+        }
+        mPlayer.setTexture(mTexture);
         mPlayer.setPosition(100.f, 100.f);
-        mPlayer.setFillColor(sf::Color::Cyan);
 }
 
 void Game::run(){

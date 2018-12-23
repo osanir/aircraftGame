@@ -17,7 +17,8 @@ private:
     void handlePlayerInput(sf::Keyboard::Key, bool);
 
     sf::RenderWindow mWindow;
-    sf::CircleShape mPlayer;
+    sf::Texture mTexture;
+    sf::Sprite mPlayer;
 
     bool mIsMovingUp = false;
     bool mIsMovingDown = false;
